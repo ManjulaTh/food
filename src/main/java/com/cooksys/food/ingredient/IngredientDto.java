@@ -5,6 +5,8 @@ public class IngredientDto {
 	private Integer id;
 
 	private String name;
+	
+	private Boolean spicy;
 
 	public Integer getId() {
 		return id;
@@ -20,6 +22,14 @@ public class IngredientDto {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Boolean getSpicy() {
+		return spicy;
+	}
+
+	public void setSpicy(Boolean spicy) {
+		this.spicy = spicy;
 	}
 
 	

@@ -1,8 +1,13 @@
 package com.cooksys.food.ingredient;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+import com.cooksys.food.Food;
 
 @Entity
 public class Ingredient {
@@ -12,6 +17,11 @@ public class Ingredient {
 	private Integer id;
 	
 	private String name;
+	
+	private Boolean spicy;
+	
+	@ManyToMany
+	private List<Food> foods;
 
 	public Integer getId() {
 		return id;
@@ -24,9 +34,25 @@ public class Ingredient {
 	public String getName() {
 		return name;
 	}
+	
+	public List<Food> getFoods() {
+		return foods;
+	}
+
+	public void setFoods(List<Food> foods) {
+		this.foods = foods;
+	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public Boolean getSpicy() {
+		return spicy;
+	}
+
+	public void setSpicy(Boolean spicy) {
+		this.spicy = spicy;
 	}
 
 	@Override
@@ -53,6 +79,5 @@ public class Ingredient {
 			return false;
 		return true;
 	}
-	
 	
 }

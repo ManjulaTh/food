@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,6 +47,11 @@ public class FoodController {
 	@GetMapping("{id}/ingredient")
 	private List<IngredientDto> getIngredients(@PathVariable("id") Integer foodId) {
 		return foodService.getIngredients(foodId).stream().map(ingredientMapper::toDto).collect(Collectors.toList());
+	}
+	
+	@PutMapping("{id}")
+	private void updateFood(@PathVariable("id") Integer updateId, @RequestBody FoodDto food) {
+		foodService.update(updateId, foodMapper.fromDto(food));
 	}
 	
 }

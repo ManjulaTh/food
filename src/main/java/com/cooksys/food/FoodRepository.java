@@ -20,7 +20,7 @@ public class FoodRepository {
 	public List<Food> findAll() {
 		return em.createQuery("FROM Food").getResultList();
 	}
-
+	
 	@Transactional
 	public void save(Food food) {
 		em.persist(food);
@@ -28,6 +28,11 @@ public class FoodRepository {
 
 	public Food findById(Integer foodId) {
 		return em.find(Food.class, foodId);
+	}
+	
+	@Transactional
+	public void update(Food food) {
+		em.merge(food);
 	}
 
 }

@@ -1,29 +1,11 @@
 package com.cooksys.food.ingredient;
 
-import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
+import java.util.List;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public class IngredientRepository {
+public interface IngredientRepository extends JpaRepository<Ingredient, Integer>{
 
-	private EntityManager em;
+	List<Ingredient> findAllBySpicy(Boolean spicy);
 
-	public IngredientRepository(EntityManager em) {
-		super();
-		this.em = em;
-	}
-
-	@Transactional
-	public void create(Ingredient ingredient) {
-		em.persist(ingredient);
-	}
-
-	public Ingredient findById(Integer ingredientId) {
-		return em.find(Ingredient.class, ingredientId);
-	}
-	
-	
-	
 }

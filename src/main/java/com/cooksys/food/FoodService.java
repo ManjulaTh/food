@@ -31,13 +31,16 @@ public class FoodService {
 
 	@Transactional
 	public void addIngredient(Integer foodId, Integer ingredientId) {
-		foodRepository.findById(foodId).getIngredients().add(ingredientRepository.findById(ingredientId));
+		foodRepository.findById(foodId).getIngredients().add(ingredientRepository.findById(ingredientId).get());
 	}
 
 	public List<Ingredient> getIngredients(Integer foodId) {
 		return foodRepository.findById(foodId).getIngredients();
 	}
 
-	
-	
+	public void update(Integer updateId, Food food) {
+		food.setId(updateId);
+		foodRepository.update(food);
+	}
+
 }
